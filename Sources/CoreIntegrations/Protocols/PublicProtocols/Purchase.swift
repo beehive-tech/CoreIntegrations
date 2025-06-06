@@ -145,4 +145,20 @@ public struct Purchase: Hashable {
     public var currencyCode:String {
         return product.priceFormatStyle.currencyCode
     }
+    
+    public var isEligibleForTrial: Bool {
+        get async {
+            guard let subscription = product.subscription,
+                  let introOffer = subscription.introductoryOffer else {
+                return false
+            }
+            
+            guard introOffer.paymentMode == .freeTrial else {
+                return false
+            }
+            
+            return await subscription.isEligibleForIntroOffer
+        }
+    }
+    
 }
