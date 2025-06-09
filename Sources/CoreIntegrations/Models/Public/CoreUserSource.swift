@@ -5,7 +5,14 @@ public enum CoreUserSource: CaseIterable, Hashable, Sendable, RawRepresentable {
     case organic
     case asa
     case facebook
+    
+    // google = google_redirrect, hasn't change the name for compatibility reasons
     case google
+    case google_gdn
+    case google_demgen
+    case google_youtube
+    case google_pmax
+    
     case ipat
     case test_premium
     case tiktok
@@ -25,6 +32,10 @@ public enum CoreUserSource: CaseIterable, Hashable, Sendable, RawRepresentable {
         case "asa": self = .asa
         case "facebook": self = .facebook
         case "google": self = .google
+        case "google_gdn": self = .google_gdn
+        case "google_demgen": self = .google_demgen
+        case "google_youtube": self = .google_youtube
+        case "google_pmax": self = .google_pmax
         case "ipat": self = .ipat
         case "test_premium": self = .test_premium
         case "tiktok": self = .tiktok
@@ -44,6 +55,10 @@ public enum CoreUserSource: CaseIterable, Hashable, Sendable, RawRepresentable {
         case .asa: return "asa"
         case .facebook: return "facebook"
         case .google: return "google"
+        case .google_gdn: return "google_gdn"
+        case .google_demgen: return "google_demgen"
+        case .google_youtube: return "google_youtube"
+        case .google_pmax: return "google_pmax"
         case .ipat: return "ipat"
         case .test_premium: return "test_premium"
         case .tiktok: return "tiktok"

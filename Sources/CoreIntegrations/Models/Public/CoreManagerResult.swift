@@ -9,6 +9,10 @@ public struct CoreManagerResult: Hashable, Sendable {
     public var asaPaywallName: String
     public var facebookPaywallName: String
     public var googlePaywallName: String
+    public var googleGDNPaywallName: String
+    public var googleDemGenPaywallName: String
+    public var googleYouTubePaywallName: String
+    public var googlePMaxPaywallName: String
     public var snapchatPaywallName: String
     public var tiktokPaywallName: String
     public var instagramPaywallName: String

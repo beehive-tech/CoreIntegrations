@@ -5,6 +5,10 @@ enum InternalRemoteABTests: String, CoreRemoteABTestable {
     // Framework
     case ab_paywall_fb
     case ab_paywall_google
+    case ab_paywall_google_gdn
+    case ab_paywall_google_demgen
+    case ab_paywall_google_youtube
+    case ab_paywall_google_pmax
     case ab_paywall_asa
     case ab_paywall_snapchat
     case ab_paywall_tiktok
@@ -26,6 +30,14 @@ enum InternalRemoteABTests: String, CoreRemoteABTestable {
             return [.facebook]
         case .ab_paywall_google:
             return [.google]
+        case .ab_paywall_google_gdn:
+            return [.google_gdn]
+        case .ab_paywall_google_demgen:
+            return [.google_demgen]
+        case .ab_paywall_google_youtube:
+            return [.google_youtube]
+        case .ab_paywall_google_pmax:
+            return [.google_pmax]
         case .ab_paywall_asa:
             return [.asa]
         case .ab_paywall_organic:

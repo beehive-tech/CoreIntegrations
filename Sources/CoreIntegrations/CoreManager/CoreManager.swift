@@ -68,7 +68,21 @@ public class CoreManager {
                 hardPaywall?.updateValue(xc_screen_style_h)
             }
             
-            let result = CoreManagerResult(userSource: CoreUserSource(rawValue: xc_network), activePaywallName: xc_activePaywallName, organicPaywallName: xc_activePaywallName, asaPaywallName: xc_activePaywallName, facebookPaywallName: xc_activePaywallName, googlePaywallName: xc_activePaywallName, snapchatPaywallName: xc_activePaywallName, tiktokPaywallName: xc_activePaywallName, instagramPaywallName: xc_activePaywallName, bingPaywallName: xc_activePaywallName, molocoPaywallName: xc_activePaywallName,
+            let result = CoreManagerResult(userSource: CoreUserSource(rawValue: xc_network),
+                                           activePaywallName: xc_activePaywallName,
+                                           organicPaywallName: xc_activePaywallName,
+                                           asaPaywallName: xc_activePaywallName,
+                                           facebookPaywallName: xc_activePaywallName,
+                                           googlePaywallName: xc_activePaywallName,
+                                           googleGDNPaywallName: xc_activePaywallName,
+                                           googleDemGenPaywallName: xc_activePaywallName,
+                                           googleYouTubePaywallName: xc_activePaywallName,
+                                           googlePMaxPaywallName: xc_activePaywallName,
+                                           snapchatPaywallName: xc_activePaywallName,
+                                           tiktokPaywallName: xc_activePaywallName,
+                                           instagramPaywallName: xc_activePaywallName,
+                                           bingPaywallName: xc_activePaywallName,
+                                           molocoPaywallName: xc_activePaywallName,
                                            applovinPaywallName: xc_activePaywallName)
             
             purchaseManager = PurchasesManager.shared
@@ -361,13 +375,23 @@ public class CoreManager {
         var networkSource: CoreUserSource = .unknown
         
         if let networkValue = deepLinkResult["network"] {
-            if networkValue.contains("web2app_fb") || networkValue.contains("metaweb_int") || networkValue.contains("facebook_int") {
+            if networkValue.lowercased().contains("web2app_fb") ||
+                networkValue.lowercased().contains("metaweb_int") ||
+                networkValue.lowercased().contains("facebook_int") {
                 networkSource = .facebook
-            } else if networkValue.contains("Google_StoreRedirect") {
+            } else if networkValue.lowercased().contains("google_storeredirect") {
                 networkSource = .google
-            } else if networkValue.contains("instagram") {
+            } else if networkValue.lowercased().contains("google_gdn") {
+                networkSource = .google_gdn
+            } else if networkValue.lowercased().contains("google_demgen") {
+                networkSource = .google_demgen
+            } else if networkValue.lowercased().contains("google_youtube") {
+                networkSource = .google_youtube
+            } else if networkValue.lowercased().contains("google_pmax") {
+                networkSource = .google_pmax
+            } else if networkValue.lowercased().contains("instagram") {
                 networkSource = .instagram
-            } else if networkValue.contains("snapchat") {
+            } else if networkValue.lowercased().contains("snapchat") {
                 networkSource = .snapchat
             } else if networkValue.lowercased().contains("bing") {
                 networkSource = .bing
@@ -456,6 +480,10 @@ class ConfigurationResultManager {
         
         let facebookPaywallName = self.getPaywallNameFromConfig(InternalRemoteABTests.ab_paywall_fb.value)
         let googlePaywallName = self.getPaywallNameFromConfig(InternalRemoteABTests.ab_paywall_google.value)
+        let googleGDNPaywallName = self.getPaywallNameFromConfig(InternalRemoteABTests.ab_paywall_google_gdn.value)
+        let googleDemGenPaywallName = self.getPaywallNameFromConfig(InternalRemoteABTests.ab_paywall_google_demgen.value)
+        let googleYTPaywallName = self.getPaywallNameFromConfig(InternalRemoteABTests.ab_paywall_google_youtube.value)
+        let googlePMaxPaywallName = self.getPaywallNameFromConfig(InternalRemoteABTests.ab_paywall_google_pmax.value)
         let asaPaywallName = self.getPaywallNameFromConfig(InternalRemoteABTests.ab_paywall_asa.value)
         let snapchatPaywallName = self.getPaywallNameFromConfig(InternalRemoteABTests.ab_paywall_snapchat.value)
         let tiktokPaywallName = self.getPaywallNameFromConfig(InternalRemoteABTests.ab_paywall_tiktok.value)
@@ -483,6 +511,14 @@ class ConfigurationResultManager {
                 activePaywallName = facebookPaywallName
             case .google:
                 activePaywallName = googlePaywallName
+            case .google_gdn:
+                activePaywallName = googleGDNPaywallName
+            case .google_demgen:
+                activePaywallName = googleDemGenPaywallName
+            case .google_youtube:
+                activePaywallName = googleYTPaywallName
+            case .google_pmax:
+                activePaywallName = googlePMaxPaywallName
             case .snapchat:
                 activePaywallName = snapchatPaywallName
             case .tiktok:
@@ -505,6 +541,10 @@ class ConfigurationResultManager {
                                                   asaPaywallName: asaPaywallName,
                                                   facebookPaywallName: facebookPaywallName,
                                                   googlePaywallName: googlePaywallName,
+                                                  googleGDNPaywallName: googleGDNPaywallName,
+                                                  googleDemGenPaywallName: googleDemGenPaywallName,
+                                                  googleYouTubePaywallName: googleYTPaywallName,
+                                                  googlePMaxPaywallName: googlePMaxPaywallName,
                                                   snapchatPaywallName: snapchatPaywallName,
                                                   tiktokPaywallName: tiktokPaywallName,
                                                   instagramPaywallName: instagramPaywallName,
