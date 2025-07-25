@@ -210,7 +210,7 @@ public class CoreManager {
         }
     }
     
-    static var attAnsweredHandler: (() -> ())?
+    public static var attAnsweredHandler: (() -> ())?
     func requestATT() {
         let attStatus = ATTrackingManager.trackingAuthorizationStatus
         guard attStatus == .notDetermined else {
