@@ -16,8 +16,10 @@ public class FirebaseManager {
         
     }
     
+    public static var externalConfiguration: (() -> ())?
+    
     public func configure(completion: @escaping () -> Void) {
-        FirebaseApp.configure()
+        Self.externalConfiguration?() ?? FirebaseApp.configure()
         Analytics.logEvent("Firebase Init", parameters: nil)
         
         completion()
