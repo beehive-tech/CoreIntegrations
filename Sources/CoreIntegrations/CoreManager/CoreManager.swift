@@ -210,7 +210,7 @@ public class CoreManager {
         }
     }
     
-    public static var attAnsweredHandler: (() -> ())?
+    public static var attAnsweredHandler: ((ATTrackingManager.AuthorizationStatus) -> ())?
     func requestATT() {
         let attStatus = ATTrackingManager.trackingAuthorizationStatus
         guard attStatus == .notDetermined else {
@@ -261,7 +261,7 @@ public class CoreManager {
         }
         facebookManager?.configureATT(isAuthorized: status == .authorized)
         
-        Self.attAnsweredHandler?()
+        Self.attAnsweredHandler?(status)
     }
     
     func handleAttributionInstall() {

@@ -8,7 +8,7 @@ class AppConfigurationManager {
     private var isFirstStart: Bool
     
     private var completedEvents = [any ConfigurationEvent]()
-    private var timout: Int = 6
+    private var timout: Int = 99//6
     private var currentSecond = 0
     private var waitingCallbacks = [(ConfigurationResult) -> Void]()
     private var attributionCallback: (() -> Void)?
