@@ -89,7 +89,7 @@ extension AppfslyerManager: AppfslyerManagerProtocol {
     }
     
     public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//        AppsFlyerLib.shared().handlePushNotification(userInfo)
+        AppsFlyerLib.shared().handlePushNotification(userInfo)
     }
     
     public func startAppsflyer() {
